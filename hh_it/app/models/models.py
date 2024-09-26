@@ -3,9 +3,11 @@ from .abstract import TimestampModel
 
 
 class Company(TimestampModel):
+    """Компания"""
     name = models.CharField(
         max_length=255,
-        verbose_name='Компания')
+        verbose_name='Компания'
+    )
 
 
 class Vacancy(TimestampModel):
@@ -41,4 +43,8 @@ class Vacancy(TimestampModel):
         blank=False,
         verbose_name='Текст вакансии'
     )
-    company: Company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name='Компания')
+    company: Company = models.ForeignKey(
+        Company,
+        on_delete=models.CASCADE,
+        verbose_name='Компания'
+    )
