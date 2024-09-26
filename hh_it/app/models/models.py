@@ -6,10 +6,30 @@ from .abstract import TimestampModel
 
 class Company(TimestampModel):
     """Компания"""
-    name = models.CharField(
+    id: int
+    name: str = models.CharField(
         max_length=255,
         verbose_name='Компания'
     )
+    company_description: str = models.TextField(
+        null=False,
+        blank=False,
+        verbose_name='Текст компании'
+    )
+    website: str = models.URLField(
+        null=True,
+        blank=True,
+        verbose_name='Веб-сайт компании'
+    )
+    location: str = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name='Локация компании'
+    )
+
+    def __str__(self):
+        return self.name
 
 
 class Vacancy(TimestampModel):
