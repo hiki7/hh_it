@@ -104,6 +104,11 @@ class Vacancy(TimestampModel):
             ('Freelance', 'Freelance')
         ]
     )
+    technology: Technology = models.ForeignKey(
+        Technology,
+        on_delete=models.CASCADE,
+        verbose_name='Технология'
+    )
 
     def __str__(self):
         return self.position_name
