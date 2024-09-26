@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.db import models
 from .abstract import TimestampModel
 
@@ -47,4 +49,24 @@ class Vacancy(TimestampModel):
         Company,
         on_delete=models.CASCADE,
         verbose_name='Компания'
+    )
+    location: str = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name='Локация вакансии'
+    )
+    posted_date: date = models.DateField(
+        verbose_name='Дата поста вакансии'
+    )
+    employment_type: str = models.CharField(
+        max_length=50,
+        null=False,
+        blank=False,
+        choices=[
+            ('Full-time', 'Full-time'),
+            ('Part-time', 'Part-time'),
+            ('Contract', 'Contract'),
+            ('Freelance', 'Freelance')
+        ]
     )
