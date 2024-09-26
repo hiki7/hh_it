@@ -70,3 +70,6 @@ class Vacancy(TimestampModel):
             ('Freelance', 'Freelance')
         ]
     )
+
+    def __str__(self):
+        return self.position_name
