@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+from .env_variables import DB_POSTGRES_USER, DB_POSTGRES_HOST, DB_POSTGRES_PORT, DB_POSTGRES_NAME, DB_POSTGRES_PASSWORD
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-e(d76k_)9xwy(ylg2@_p8t1!o=y6bf9n3#mc%$5vhymmo9hj3$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,9 +76,13 @@ WSGI_APPLICATION = 'hh_it.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": f"{DB_POSTGRES_NAME}",
+        "USER": f"{DB_POSTGRES_USER}",
+        "PASSWORD": f"{DB_POSTGRES_PASSWORD}",
+        "HOST": f"{DB_POSTGRES_HOST}",
+        "PORT": f"{DB_POSTGRES_PORT}",
     }
 }
 
