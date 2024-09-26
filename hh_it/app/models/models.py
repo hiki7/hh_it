@@ -32,6 +32,20 @@ class Company(TimestampModel):
         return self.name
 
 
+class Technology(TimestampModel):
+    """Технологии (Python, Docker, React, etc)"""
+    id: int
+    technology_name: str = models.CharField(
+        max_length=255,
+        null=False,
+        blank=False,
+        verbose_name='Технология'
+    )
+
+    def __str__(self):
+        return self.technology_name
+
+
 class Vacancy(TimestampModel):
     """Вакансия"""
     id: int
