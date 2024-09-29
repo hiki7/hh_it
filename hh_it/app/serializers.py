@@ -7,10 +7,12 @@ class CompanySerializer(serializers.ModelSerializer):
         model = Company
         fields = ['id', 'name', 'company_description', 'website', 'location']
 
+
 class TechnologySerializer(serializers.ModelSerializer):
     class Meta:
         model = Technology
         fields = ['id', 'technology_name']
+
 
 class VacancySerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,6 +20,6 @@ class VacancySerializer(serializers.ModelSerializer):
         fields = [
             'id', 'position_name', 'salary_start', 'salary_end',
             'required_experience_year_start', 'required_experience_year_end',
-            'position_description', 'company', 'location', 'posted_date',
+            'position_description', 'company', 'location',
             'employment_type', 'technology'
         ]

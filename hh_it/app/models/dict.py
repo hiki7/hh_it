@@ -64,3 +64,97 @@ class Position(TimestampModel):
 
     def __str__(self):
         return self.name
+
+
+class Country(TimestampModel):
+    """Страна"""
+    id: int
+    name: str = models.CharField(
+        max_length=255,
+        null=False,
+        blank=False,
+        verbose_name='Страна'
+    )
+
+    class Meta:
+        verbose_name_plural = _("Страны")
+        verbose_name = _("Страна")
+
+    def __str__(self):
+        return self.name
+
+
+class City(TimestampModel):
+    """Город"""
+    id: int
+    name: str = models.CharField(
+        max_length=255,
+        null=False,
+        blank=False,
+        verbose_name='Город'
+    )
+    country: Country = models.ForeignKey(
+        'Country',
+        on_delete=models.CASCADE,
+        related_name='cities',
+        verbose_name='Страна'
+    )
+
+    class Meta:
+        verbose_name_plural = _("Города")
+        verbose_name = _("Город")
+
+    def __str__(self):
+        return self.name
+
+
+class Street(TimestampModel):
+    """Улица"""
+    id: int
+    name: str = models.CharField(
+        max_length=255,
+        null=False,
+        blank=False,
+        verbose_name='Улица'
+    )
+
+    class Meta:
+        verbose_name_plural = _("Улицы")
+        verbose_name = _("Улица")
+
+    def __str__(self):
+        return self.name
+
+
+class Location(TimestampModel):
+    """Локация"""
+    id: int
+    country: Country = models.ForeignKey(
+        Country,
+        on_delete=models.CASCADE,
+        related_name='locations',
+        verbose_name='Страна'
+    )
+    city: City = models.ForeignKey(
+        City,
+        on_delete=models.CASCADE,
+        related_name='locations',
+        verbose_name='Город',
+        null=True,
+        blank=True
+    )
+    street: Street = models.ForeignKey(
+        'Street',
+        on_delete=models.CASCADE,
+        related_name='locations',
+        verbose_name='Улица',
+        null=True,
+        blank=True
+    )
+
+    class Meta:
+        verbose_name_plural = _("Локации")
+        verbose_name = _("Локация")
+
+    def __str__(self):
+        return f'{self.country.name}'
