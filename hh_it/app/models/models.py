@@ -72,8 +72,8 @@ class Vacancy(TimestampModel):
     )
 
     class Meta:
-        verbose_name_plural = _("Вакансии")
-        verbose_name = _("Вакансия")
+        verbose_name_plural = _("[a1] Вакансии")
+        verbose_name = _("[a1] Вакансия")
 
     def __str__(self):
         return self.position_name
