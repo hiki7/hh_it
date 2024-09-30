@@ -40,6 +40,12 @@ class TechnologySerializer(serializers.ModelSerializer):
         fields = ['id', 'technology_name']
 
 
+class PositionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Position
+        fields = ['id', 'name']
+
+
 class VacancySerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacancy
