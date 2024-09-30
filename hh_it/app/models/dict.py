@@ -149,7 +149,13 @@ class Technology(TimestampModel):
 class Position(TimestampModel):
     """Позиция"""
     id: int
-    name: str = models.CharField(max_length=255, null=False, blank=False, unique=True, verbose_name='Позиция')
+    name: str = models.CharField(
+        max_length=255,
+        null=False,
+        blank=False,
+        unique=True,
+        verbose_name='Позиция'
+    )
 
     class Meta:
         verbose_name_plural = _("Позиции")
