@@ -1,5 +1,11 @@
 from rest_framework import serializers
-from .models.models import Company, Technology, Vacancy
+from .models import Company, Technology, Vacancy, Country, City, Street, Location, Position, EmploymentType
+
+
+class CountrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Country
+        fields = ['id', 'name']
 
 
 class CompanySerializer(serializers.ModelSerializer):
