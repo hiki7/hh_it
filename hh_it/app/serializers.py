@@ -46,6 +46,12 @@ class PositionSerializer(serializers.ModelSerializer):
         fields = ['id', 'name']
 
 
+class EmploymentTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EmploymentType
+        fields = ['id', 'name']
+
+
 class VacancySerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacancy
