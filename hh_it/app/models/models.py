@@ -87,9 +87,9 @@ class Vacancy(TimestampModel):
     @property
     def get_salary_range(self):
         if self.salary_start and self.salary_end:
-            return f"{self.salary_start} - {self.salary_end}"
+            return f"{self.salary_start} - {self.salary_end} {self.currency}"
         elif self.salary_start:
-            return f"от {self.salary_start} до вычета налогов"
+            return f"от {self.salary_start} {self.currency} до вычета налогов"
         return "Уровень дохода не указан"
 
 
