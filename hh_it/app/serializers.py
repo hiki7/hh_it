@@ -13,6 +13,13 @@ class CitySerializer(serializers.ModelSerializer):
         model = City
         fields = ['id', 'name', 'country']
 
+
+class StreetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Street
+        fields = ['id', 'name']
+
+        
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
