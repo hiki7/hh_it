@@ -157,3 +157,22 @@ class Position(TimestampModel):
 
     def __str__(self):
         return self.name
+
+
+class EmploymentType(TimestampModel):
+    """Тип занятости"""
+    id: int
+    name: str = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        unique=True,
+        verbose_name='Название занятости'
+    )
+
+    class Meta:
+        verbose_name_plural = _("Типы занятостей")
+        verbose_name = _("Тип занятости")
+
+    def __str__(self):
+        return self.name
