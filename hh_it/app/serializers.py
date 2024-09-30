@@ -19,7 +19,13 @@ class StreetSerializer(serializers.ModelSerializer):
         model = Street
         fields = ['id', 'name']
 
-        
+
+class LocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Location
+        fields = ['id', 'country', 'city', 'street']
+
+
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
