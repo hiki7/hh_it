@@ -10,6 +10,13 @@ EMPLOYMENT_TYPE = [
     ('Freelance', 'Freelance')
 ]
 
+CURRENCY = [
+    ('1', '₸'),
+    ('2', '₽'),
+    ('3', '€'),
+    ('4', '$')
+]
+
 
 class Vacancy(TimestampModel):
     """Вакансия"""
@@ -70,6 +77,15 @@ class Vacancy(TimestampModel):
         default=True,
         verbose_name='Активная'
     )
+
+    @property
+    def get_salary_range(self):
+        if self.salary_start and self.salary_end:
+            return f"{self.salary_start} - {self.salary_end}"
+        elif self.salary_start:
+            return f"от {self.salary_start} до вычета налогов"
+        return "Уровень дохода не указан"
+
 
     class Meta:
         verbose_name_plural = _("[a1] Вакансии")
