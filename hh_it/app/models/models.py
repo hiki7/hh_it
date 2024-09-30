@@ -11,10 +11,10 @@ EMPLOYMENT_TYPE = [
 ]
 
 CURRENCY = [
-    ('1', '₸'),
-    ('2', '₽'),
-    ('3', '€'),
-    ('4', '$')
+    ('KZT', '₸'),
+    ('RUB', '₽'),
+    ('EUR', '€'),
+    ('USD', '$')
 ]
 
 
@@ -38,6 +38,12 @@ class Vacancy(TimestampModel):
         null=True,
         blank=True,
         verbose_name='Зарплата конец')
+    currency: str = models.CharField(
+        max_length=3,
+        choices=CURRENCY,
+        default='KZT',
+        verbose_name='Валюта'
+    )
     required_experience_year_start: int = models.PositiveSmallIntegerField(
         null=True,
         blank=True,
