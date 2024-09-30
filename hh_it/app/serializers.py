@@ -53,11 +53,17 @@ class EmploymentTypeSerializer(serializers.ModelSerializer):
 
 
 class VacancySerializer(serializers.ModelSerializer):
+    company = CompanySerializer()
+    position_name = PositionSerializer()
+    location = LocationSerializer()
+    employment_type = EmploymentTypeSerializer(many=True)
+    technology = TechnologySerializer(many=True)
+
     class Meta:
         model = Vacancy
         fields = [
-            'id', 'position_name', 'salary_start', 'salary_end',
+            'id', 'position_name', 'salary_start', 'salary_end', 'currency', 'get_salary_range',
             'required_experience_year_start', 'required_experience_year_end',
             'position_description', 'company', 'location',
-            'employment_type', 'technology'
+            'employment_type', 'technology', 'is_active'
         ]
