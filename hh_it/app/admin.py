@@ -6,8 +6,8 @@ from .models import (Company, Technology, Position,
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
     list_display = ('name', 'website', 'location')
-    search_fields = ('name', 'location')
-    list_filter = ('location',)
+    search_fields = ('name', 'location__country__name', 'location__city__name', 'location__street__name')
+    list_filter = ('location__country', 'location__city')
     ordering = ('name',)
 
 
