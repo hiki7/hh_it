@@ -3,12 +3,6 @@ from django.db import models
 from .abstract import TimestampModel
 from .dict import Technology, Company, Position
 
-EMPLOYMENT_TYPE = [
-    ('Full-time', 'Full-time'),
-    ('Part-time', 'Part-time'),
-    ('Contract', 'Contract'),
-    ('Freelance', 'Freelance')
-]
 
 CURRENCY = [
     ('KZT', '₸'),
@@ -67,12 +61,6 @@ class Vacancy(TimestampModel):
         null=True,
         blank=True,
         verbose_name='Локация вакансии'
-    )
-    employment_type: str = models.CharField(
-        max_length=50,
-        null=False,
-        blank=False,
-        choices=EMPLOYMENT_TYPE,
     )
     technology: Technology = models.ForeignKey(
         Technology,
