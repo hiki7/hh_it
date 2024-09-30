@@ -1,7 +1,7 @@
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from .abstract import TimestampModel
-from .dict import Technology, Company, Position
+from .dict import Technology, Company, Position, EmploymentType
 
 
 CURRENCY = [
@@ -61,6 +61,11 @@ class Vacancy(TimestampModel):
         null=True,
         blank=True,
         verbose_name='Локация вакансии'
+    )
+    employment_type: EmploymentType = models.ManyToManyField(
+        EmploymentType,
+        blank=True,
+        verbose_name='Тип занятости'
     )
     technology: Technology = models.ForeignKey(
         Technology,
