@@ -66,9 +66,9 @@ class Vacancy(TimestampModel):
         blank=True,
         verbose_name='Тип занятости'
     )
-    technology: Technology = models.ForeignKey(
+    technology: Technology = models.ManyToManyField(
         Technology,
-        on_delete=models.CASCADE,
+        blank=True,
         verbose_name='Технология'
     )
     is_active = models.BooleanField(
