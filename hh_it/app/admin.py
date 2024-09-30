@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (Company, Technology, Position,
-                     Country, City, Street, Location, Vacancy)
+                     Country, City, Street, Location, Vacancy, EmploymentType)
 
 
 @admin.register(Company)
@@ -61,3 +61,10 @@ class VacancyAdmin(admin.ModelAdmin):
     search_fields = ('position_name__name', 'company__name', 'location__country__name', 'technology__technology_name')
     list_filter = ('company', 'currency', 'is_active', 'employment_type', 'technology')
     ordering = ('position_name', 'company')
+
+
+@admin.register(EmploymentType)
+class EmploymentTypeAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+    ordering = ('name',)
