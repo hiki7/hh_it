@@ -65,3 +65,15 @@ class CityViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['name', 'country__name']
+
+
+@extend_schema(tags=["Street"])
+class StreetViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows streets to be viewed or edited.
+    """
+    queryset = Street.objects.all().order_by('-created_at')
+    serializer_class = StreetSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['name']
