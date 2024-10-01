@@ -89,3 +89,15 @@ class LocationViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['country__name', 'city__name', 'street__name']
+
+
+@extend_schema(tags=["EmploymentType"])
+class EmploymentTypeViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows employment types to be viewed or edited.
+    """
+    queryset = EmploymentType.objects.all().order_by('-created_at')
+    serializer_class = EmploymentTypeSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['name']
