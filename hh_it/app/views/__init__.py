@@ -1,2 +1,2 @@
 from .views import VacancyViewSet
-from .dict import CompanyViewSet
+from .dict import CompanyViewSet, PositionViewSet

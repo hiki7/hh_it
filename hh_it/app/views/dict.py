@@ -17,3 +17,15 @@ class CompanyViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['name']
+
+
+@extend_schema(tags=["Position"])
+class PositionViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows positions to be viewed or edited.
+    """
+    queryset = Position.objects.all().order_by('-created_at')
+    serializer_class = PositionSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['name']
