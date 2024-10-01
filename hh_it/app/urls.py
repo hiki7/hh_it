@@ -1,6 +1,6 @@
 from rest_framework import routers
 from django.urls import include, path
-from .views import VacancyViewSet
+from .views import VacancyViewSet, CompanyViewSet
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -9,6 +9,7 @@ from rest_framework_simplejwt.views import (
 
 router = routers.DefaultRouter()
 router.register(r'vacancy', VacancyViewSet)
+router.register(r'company', CompanyViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
