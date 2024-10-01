@@ -1,6 +1,6 @@
 from rest_framework import routers
 from django.urls import include, path
-from .views.views import VacancyViewSet
+from .views import VacancyViewSet
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,

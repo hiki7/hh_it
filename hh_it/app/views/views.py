@@ -15,3 +15,6 @@ class VacancyViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['position_name__name', 'is_active']
+
+
+
