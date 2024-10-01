@@ -53,3 +53,15 @@ class CountryViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['name']
+
+
+@extend_schema(tags=["City"])
+class CityViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows cities to be viewed or edited.
+    """
+    queryset = City.objects.all().order_by('-created_at')
+    serializer_class = CitySerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['name', 'country__name']
