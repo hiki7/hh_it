@@ -29,3 +29,15 @@ class PositionViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['name']
+
+
+@extend_schema(tags=["Technology"])
+class TechnologyViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows technologies to be viewed or edited.
+    """
+    queryset = Technology.objects.all().order_by('-created_at')
+    serializer_class = TechnologySerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['technology_name']
