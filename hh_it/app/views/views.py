@@ -48,3 +48,16 @@ class HiddenVacanciesViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ["user_id", "vacancy_id"]
+
+
+@extend_schema(tags=["Hidden Companies"])
+class HiddenCompaniesViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows hidden companies to be viewed or edited.
+    """
+
+    queryset = HiddenCompanies.objects.all().order_by("-created_at")
+    serializer_class = HiddenCompaniesSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["user_id", "company_id"]
