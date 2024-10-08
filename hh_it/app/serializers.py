@@ -95,3 +95,9 @@ class HiddenVacanciesSerializer(serializers.ModelSerializer):
     class Meta:
         model = HiddenVacancies
         fields = ["id", "user_id", "vacancy_id"]
+
+
+class HiddenCompaniesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HiddenCompanies
+        fields = ["id", "user_id", "company_id"]
