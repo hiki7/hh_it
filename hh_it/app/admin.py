@@ -103,3 +103,10 @@ class HiddenVacanciesAdmin(admin.ModelAdmin):
     list_display = ("user_id", "vacancy_id")
     search_fields = ("user_id", "vacancy_id")
     ordering = ("user_id", "vacancy_id")
+
+
+@admin.register(HiddenCompanies)
+class HiddenCompaniesAdmin(admin.ModelAdmin):
+    list_display = ("user_id", "company_id")
+    search_fields = ("user_id", "company_id")
+    ordering = ("user_id", "company_id")
