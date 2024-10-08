@@ -89,3 +89,9 @@ class VacancySerializer(serializers.ModelSerializer):
             "technology",
             "is_active",
         ]
+
+
+class HiddenVacanciesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HiddenVacancies
+        fields = ["id", "user_id", "vacancy_id"]
