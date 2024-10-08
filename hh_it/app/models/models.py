@@ -68,7 +68,7 @@ class Vacancy(TimestampModel):
         verbose_name = _("[a1] Вакансия")
 
     def __str__(self):
-        return self.position_name
+        return str(self.position_name.name)
 
 
 class HiddenCompanies(TimestampModel):
