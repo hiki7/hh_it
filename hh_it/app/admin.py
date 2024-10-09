@@ -118,6 +118,14 @@ class HiddenVacanciesAdmin(admin.ModelAdmin):
 
 @admin.register(HiddenCompanies)
 class HiddenCompaniesAdmin(admin.ModelAdmin):
-    list_display = ("user_id", "company_id")
-    search_fields = ("user_id", "company_id")
+    list_display = ("get_user_id", "get_company_id")
+    search_fields = ("user__username", "company__name")
     ordering = ("user_id", "company_id")
+
+    def get_user_id(self, obj):
+        return obj.user_id.id
+
+    get_user_id.short_description = "User ID"
+
+    def get_company_id(self, obj):
+        return obj.company_id.id
