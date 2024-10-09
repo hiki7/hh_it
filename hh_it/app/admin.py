@@ -100,9 +100,20 @@ class EmploymentTypeAdmin(admin.ModelAdmin):
 
 @admin.register(HiddenVacancies)
 class HiddenVacanciesAdmin(admin.ModelAdmin):
-    list_display = ("user_id", "vacancy_id")
-    search_fields = ("user_id", "vacancy_id")
+    list_display = ("get_user_id", "get_vacancy_id")
+    search_fields = (
+        "user__username",
+        "vacancy__name",
+    )
     ordering = ("user_id", "vacancy_id")
+
+    def get_user_id(self, obj):
+        return obj.user_id.id
+
+    get_user_id.short_description = "User ID"
+
+    def get_vacancy_id(self, obj):
+        return obj.vacancy_id.id
 
 
 @admin.register(HiddenCompanies)
