@@ -102,6 +102,9 @@ class HiddenVacanciesSerializer(serializers.ModelSerializer):
 
 
 class HiddenCompaniesSerializer(serializers.ModelSerializer):
+    user_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    company_id = serializers.PrimaryKeyRelatedField(queryset=Company.objects.all())
+
     class Meta:
         model = HiddenCompanies
         fields = ["id", "user_id", "company_id"]
