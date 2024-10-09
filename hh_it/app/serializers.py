@@ -12,6 +12,7 @@ from .models import (
     HiddenCompanies,
     HiddenVacancies,
 )
+from django.contrib.auth.models import User
 
 
 class CountrySerializer(serializers.ModelSerializer):
@@ -92,6 +93,9 @@ class VacancySerializer(serializers.ModelSerializer):
 
 
 class HiddenVacanciesSerializer(serializers.ModelSerializer):
+    user_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    vacancy_id = serializers.PrimaryKeyRelatedField(queryset=Vacancy.objects.all())
+
     class Meta:
         model = HiddenVacancies
         fields = ["id", "user_id", "vacancy_id"]
