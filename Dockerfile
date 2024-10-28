@@ -30,12 +30,19 @@ COPY --from=requirements-stage /usr/local/bin /usr/local/bin
 # Copy the entire project into the Docker image
 COPY . .
 
+# Copy the entrypoint script and make it executable
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 # Set environment variables
 ENV DJANGO_SETTINGS_MODULE=hh_it.settings \
     PYTHONUNBUFFERED=1
 
 # Expose the port on which Django will run
 EXPOSE 8000
+
+# Set the entrypoint to the new script
+ENTRYPOINT ["/entrypoint.sh"]
 
 # Start the Django development server by default
 CMD ["python", "hh_it/manage.py", "runserver", "0.0.0.0:8000"]
