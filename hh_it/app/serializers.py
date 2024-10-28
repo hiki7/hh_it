@@ -14,6 +14,8 @@ from .models import (
 )
 from django.contrib.auth.models import User
 
+from .models.models import LikedVacancies
+
 
 class CountrySerializer(serializers.ModelSerializer):
     class Meta:
@@ -108,3 +110,12 @@ class HiddenCompaniesSerializer(serializers.ModelSerializer):
     class Meta:
         model = HiddenCompanies
         fields = ["id", "user_id", "company_id"]
+
+
+class LikedVacanciesSerializer(serializers.ModelSerializer):
+    user_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    vacancy_id = serializers.PrimaryKeyRelatedField(queryset=Vacancy.objects.all())
+
+    class Meta:
+        model = LikedVacancies
+        fields = ["id", "user_id", "vacancy_id"]
