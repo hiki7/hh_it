@@ -103,3 +103,20 @@ class HiddenVacancies(TimestampModel):
 
     def __str__(self):
         return f"{self.user_id} - {self.vacancy_id}"
+
+
+class LikedVacancies(TimestampModel):
+    """Интересующие вакансии"""
+
+    id: int
+    user_id: User = models.ForeignKey(
+        User, verbose_name="Айди пользователя", on_delete=models.CASCADE
+    )
+    vacancy_id: Vacancy = models.ForeignKey(Vacancy, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = _("[a1] Интересующие вакансии")
+        verbose_name = _("[a1] Интересующая вакансия")
+
+    def __str__(self):
+        return f"{self.user_id} - {self.vacancy_id}"
