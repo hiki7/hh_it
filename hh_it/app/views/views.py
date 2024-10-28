@@ -1,11 +1,12 @@
 from rest_framework import permissions, viewsets
 from drf_spectacular.utils import extend_schema
 from ..models import Vacancy
-from ..models.models import HiddenVacancies, HiddenCompanies
+from ..models.models import HiddenVacancies, HiddenCompanies, LikedVacancies
 from ..serializers import (
     VacancySerializer,
     HiddenVacanciesSerializer,
     HiddenCompaniesSerializer,
+    LikedVacanciesSerializer,
 )
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -61,3 +62,16 @@ class HiddenCompaniesViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ["user_id", "company_id"]
+
+
+@extend_schema(tags=["Liked Vacancies"])
+class LikedVacanciesViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows liked vacancies to be viewed or edited.
+    """
+
+    queryset = LikedVacancies.objects.all().order_by("-created_at")
+    serializer_class = LikedVacanciesSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["user_id", "vacancy_id"]
