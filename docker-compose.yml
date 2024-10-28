@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: hh
+      POSTGRES_USER: hh_admin
+      POSTGRES_PASSWORD: QAZqaz123  # Directly setting the password here
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"  # Map host port 5433 to container port 5432
+
+  web:
+    build:
+      context: .
+    command: python hh_it/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/hh_it
+    env_file:
+      - .env.dev
+    environment:
+      DJANGO_SETTINGS_MODULE: hh_it.settings
+      PYTHONUNBUFFERED: 1
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+
+volumes:
+  postgres_data:
