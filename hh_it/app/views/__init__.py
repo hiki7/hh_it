@@ -1,4 +1,9 @@
-from .views import VacancyViewSet, HiddenVacanciesViewSet, HiddenCompaniesViewSet, LikedVacanciesViewSet
+from .views import (
+    VacancyViewSet,
+    HiddenVacanciesViewSet,
+    HiddenCompaniesViewSet,
+    LikedVacanciesViewSet,
+)
 from .dict import (
     CompanyViewSet,
     PositionViewSet,

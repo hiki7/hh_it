@@ -11,7 +11,8 @@ from .views import (
     LocationViewSet,
     EmploymentTypeViewSet,
     HiddenVacanciesViewSet,
-    HiddenCompaniesViewSet, LikedVacanciesViewSet,
+    HiddenCompaniesViewSet,
+    LikedVacanciesViewSet,
 )
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
