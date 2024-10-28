@@ -11,7 +11,7 @@ from .views import (
     LocationViewSet,
     EmploymentTypeViewSet,
     HiddenVacanciesViewSet,
-    HiddenCompaniesViewSet,
+    HiddenCompaniesViewSet, LikedVacanciesViewSet,
 )
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -32,6 +32,7 @@ router.register(r"location", LocationViewSet)
 router.register(r"employment_type", EmploymentTypeViewSet)
 router.register(r"hidden_vacancies", HiddenVacanciesViewSet)
 router.register(r"hidden_companies", HiddenCompaniesViewSet)
+router.register(r"liked_vacancies", LikedVacanciesViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
