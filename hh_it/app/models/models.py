@@ -72,6 +72,8 @@ class Vacancy(TimestampModel):
 
 
 class HiddenCompanies(TimestampModel):
+    """Скрытые компании"""
+
     id: int
     user_id: User = models.ForeignKey(
         User, verbose_name="Айди пользователя", on_delete=models.CASCADE
@@ -87,6 +89,8 @@ class HiddenCompanies(TimestampModel):
 
 
 class HiddenVacancies(TimestampModel):
+    """Скрытые вакансии"""
+
     id: int
     user_id: User = models.ForeignKey(
         User, verbose_name="Айди пользователя", on_delete=models.CASCADE
